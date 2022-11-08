@@ -19,5 +19,7 @@ namespace Cozma_Alexandra_Lab2.Data
         public DbSet<Cozma_Alexandra_Lab2.Models.Publisher> Publisher { get; set; }
 
         public DbSet<Cozma_Alexandra_Lab2.Models.Author> Authors { get; set; }
+
+        public DbSet<Cozma_Alexandra_Lab2.Models.Category> Category { get; set; }
     }
 }
