@@ -48,8 +48,12 @@ namespace Cozma_Alexandra_Lab2.Pages.Books
 
             PopulateAssignedCategoryData(_context, Book);
 
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "FirstName");
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "ID", "LastName");
+            var authorList = _context.Authors.Select(x => new
+            {
+                x.ID,
+                FullName = x.LastName + " " + x.FirstName
+            });
+            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID","PublisherName");
 
             return Page();

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Cozma_Alexandra_Lab2.Data;
 using Cozma_Alexandra_Lab2.Models;
+using Cozma_Alexandra_Lab2.Models.ViewModels;
 
 namespace Cozma_Alexandra_Lab2.Pages.Categories
 {
@@ -18,8 +19,7 @@ namespace Cozma_Alexandra_Lab2.Pages.Categories
         {
             _context = context;
         }
-
-        public IList<Category> Category { get;set; } = default!;
+        public IList<Category> Category { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -30,3 +30,5 @@ namespace Cozma_Alexandra_Lab2.Pages.Categories
         }
     }
 }
+    
+
