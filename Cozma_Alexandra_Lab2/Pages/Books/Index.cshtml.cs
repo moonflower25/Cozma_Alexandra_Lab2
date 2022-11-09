@@ -19,15 +19,13 @@ namespace Cozma_Alexandra_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get; set; }
+        public IList<Book> Book { get; set; } = default!;
         public BookData BookD { get; set; }
         public int BookID { get; set; }
         public int CategoryID { get; set; }
         public string TitleSort { get; set; }
         public string AuthorSort { get; set; }
         public string CurrentFilter { get; set; }
-
-
         public async Task OnGetAsync(int? id, int? categoryID, string sortOrder, string searchString)
         {
             BookD = new BookData();
@@ -39,6 +37,7 @@ namespace Cozma_Alexandra_Lab2.Pages.Books
 
             BookD.Books = await _context.Book
                 .Include(b => b.Publisher)
+                .Include(b => b.Author)
                 .Include(b => b.BookCategories)
                 .ThenInclude(b => b.Category)
                 .AsNoTracking()
@@ -64,12 +63,10 @@ namespace Cozma_Alexandra_Lab2.Pages.Books
             switch (sortOrder)
             {
                 case "title_desc":
-                    BookD.Books = BookD.Books.OrderByDescending(s =>
-                   s.Title);
+                    BookD.Books = BookD.Books.OrderByDescending(s => s.Title);
                     break;
                 case "author_desc":
-                    BookD.Books = BookD.Books.OrderByDescending(s =>
-                   s.Author.FullName);
+                    BookD.Books = BookD.Books.OrderByDescending(s => s.Author.FullName);
                     break;
             }
         }

@@ -53,7 +53,8 @@ namespace Cozma_Alexandra_Lab2.Pages.Books
                 x.ID,
                 FullName = x.LastName + " " + x.FirstName
             });
-            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
+            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName"); 
+
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID","PublisherName");
 
             return Page();
