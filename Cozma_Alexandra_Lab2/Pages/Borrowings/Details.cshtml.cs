@@ -37,6 +37,7 @@ namespace Cozma_Alexandra_Lab2.Pages.Borrowings
             {
                 Borrowing = borrowing;
             }
+
             return Page();
         }
     }
