@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Cozma_Alexandra_Lab2.Data;
 using Cozma_Alexandra_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Cozma_Alexandra_Lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Cozma_Alexandra_Lab2.Data.Cozma_Alexandra_Lab2Context _context;
